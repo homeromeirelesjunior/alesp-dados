@@ -1,0 +1,84 @@
+{
+  "despesas": {
+      "despesa": [
+          {
+              "Ano": [
+                  "2015"
+              ],
+              "Matricula": [
+                  "300257"
+              ],
+              "Mes": [
+                  "3"
+              ],
+              "Valor": [
+                  "200.0"
+              ],
+              "CNPJ": [
+                  "71806251000106"
+              ],
+              "Deputado": [
+                  "ABELARDO CAMARINHA"
+              ],
+              "Tipo": [
+                  "A - COMBUSTÍVEIS E LUBRIFICANTES"
+              ],
+              "Fornecedor": [
+                  "AUTO POSTO DE SERVIÇOS MARV LTDA"
+              ]
+          },
+            {
+              "Ano": [
+                  "2007"
+              ],
+              "Matricula": [
+                  "300441"
+              ],
+              "Mes": [
+                  "3"
+              ],
+              "Valor": [
+                  "38.08"
+              ],
+              "CNPJ": [
+                  "66747577000170"
+              ],
+              "Deputado": [
+                  "ÍTALO CARDOSO"
+              ],
+              "Tipo": [
+                  "I - HOSPEDAGEM, ALIMENTAÇÃO E DESPESAS DE LOCOMOÇÃO"
+              ],
+              "Fornecedor": [
+                  "IBIZA EUROPEIA ALIMENTOS LTDA"
+              ]
+          },
+          {
+              "Ano": [
+                  "2007"
+              ],
+              "Matricula": [
+                  "300441"
+              ],
+              "Mes": [
+                  "3"
+              ],
+              "Valor": [
+                  "2994.0"
+              ],
+              "CNPJ": [
+                  "07047000000196"
+              ],
+              "Deputado": [
+                  "ÍTALO CARDOSO"
+              ],
+              "Tipo": [
+                  "J - SERVIÇOS DE COMUNICAÇÃO"
+              ],
+              "Fornecedor": [
+                  "ECT-EMP.BRAS.CORREIOS E TELEGRAFOS"
+              ]
+          }
+      ]
+  }
+}
