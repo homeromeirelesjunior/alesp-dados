@@ -45,12 +45,14 @@ app.get('/deputados/:id', (req, res) => {
     }    
 })
 
-app.get('/deputados/', (req, res) => {
+app.get('/busca', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     let deputado = req.query.deputado
 
+    console.log(deputado)
+
     try {
-        db.all('SELECT * FROM deputados WHERE Deputado LIKE %?%', [deputado], (err, rows) => {
+        db.get(`SELECT * FROM deputados WHERE Deputado LIKE '%?%'`, [deputado], (err, rows) => {
             if (err) {
                 console.log(err)
             }
