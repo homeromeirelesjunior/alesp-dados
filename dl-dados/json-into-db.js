@@ -2,7 +2,8 @@ const fs = require('fs')
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('../db/db-deputados.db')
 
-const despesasJSON = fs.readFileSync('./despesas_gabinetes-redux.json')
+// const despesasJSON = fs.readFileSync('./despesas_gabinetes-redux.json')
+const despesasJSON = fs.readFileSync('./despesas_gabinetes.json')
 
 let count = 0
 // console.log(typeof despesasJSON)
@@ -11,20 +12,41 @@ let count = 0
 
 const despesasArray = JSON.parse(despesasJSON)
 
-despesasArray.despesas.despesa.forEach(item => {            
-  db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
-  [item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor], (err) => {
-      count++
-      if (err) {
-          console.log(`Erro: ${ err }`)
-          // res.end(JSON.stringify({ success: false }))
-      } else {
-          console.log('Ok')
-          console.log(count)
-          // res.end(JSON.stringify({ success: true }))
-      }
-  })
-})
+// Funcionando
+// despesasArray.despesas.despesa.forEach(item => {            
+//   db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+//   [item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor], (err) => {
+//       count++
+//       if (err) {
+//           console.log(`Erro: ${ err }`)
+//           // res.end(JSON.stringify({ success: false }))
+//       } else {
+//           console.log('Ok')
+//           console.log(count)
+//           // res.end(JSON.stringify({ success: true }))
+//       }
+//   })
+// })
+
+// despesasArray.despesas.despesa.forEach(item => {
+//     let values = []
+//     values = item.push()
+    
+//     if (values.length === 1000) {
+//         db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+//         [item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor], (err) => {
+//             count++
+//             if (err) {
+//                 console.log(`Erro: ${ err }`)
+//                 // res.end(JSON.stringify({ success: false }))
+//             } else {
+//                 console.log('Ok')
+//                 console.log(count)
+//                 // res.end(JSON.stringify({ success: true }))
+//             }
+//         })
+//     }
+//   })
 
 // arrayCompleto = despesasArray.despesas.despesa
 
