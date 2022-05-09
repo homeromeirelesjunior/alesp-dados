@@ -2,8 +2,8 @@ const fs = require('fs')
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('../db/db-deputados.db')
 
-// const despesasJSON = fs.readFileSync('./despesas_gabinetes-redux.json')
 const despesasJSON = fs.readFileSync('./despesas_gabinetes.json')
+// const despesasJSON = fs.readFileSync('./despesas_gabinetes.json')
 
 let count = 0
 // console.log(typeof despesasJSON)
@@ -12,21 +12,49 @@ let count = 0
 
 const despesasArray = JSON.parse(despesasJSON)
 
-// Funcionando
-// despesasArray.despesas.despesa.forEach(item => {            
-//   db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
-//   [item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor], (err) => {
-//       count++
-//       if (err) {
-//           console.log(`Erro: ${ err }`)
-//           // res.end(JSON.stringify({ success: false }))
-//       } else {
-//           console.log('Ok')
-//           console.log(count)
-//           // res.end(JSON.stringify({ success: true }))
-//       }
-//   })
+const createTable = 'CREATE TABLE IF NOT EXISTS "deputados" ("Id"	INTEGER NOT NULL,"Ano"	INTEGER NOT NULL,	"Matricula"	TEXT NOT NULL,"Mes"	TEXT NOT NULL,	"Valor"	REAL NOT NULL,	"CNPJ"	TEXT NOT NULL,	"Deputado"	TEXT NOT NULL,	"Tipo"	TEXT NOT NULL,	"Fornecedor"	TEXT NOT NULL,	PRIMARY KEY("Id" AUTOINCREMENT));'
+const dropTable = 'DROP TABLE IF EXISTS deputados'
+
+// db.run(dropTable, (err) => {
+//   if (err) {
+//     console.log('Erro, tabela não deletada.')
+//   } else {
+//     console.log('Tabela deletada.')
+//   }
 // })
+
+// db.run(createTable, (err) => {
+//   if (err) {
+//     console.log('Erro, verificar criação de tabelas.')
+//   } else {
+//     console.log('Tabela criada.')
+//   }
+// });
+
+
+// despesasFlat.forEach(item => {
+//   values.push(item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor)
+
+//   console.log(values)
+// });
+
+// Funcionando
+despesasArray.despesas.despesa.forEach(item => {            
+  db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+  [item.Ano, item.Matricula, item.Mes, item.Valor, item.CNPJ, item.Deputado, item.Tipo, item.Fornecedor], (err) => {
+      count++
+      if (err) {
+          console.log(`Erro: ${ err }`)
+          // res.end(JSON.stringify({ success: false }))
+      } else {
+          console.log('Ok')
+          console.log(count)
+          // res.end(JSON.stringify({ success: true }))
+      }
+  })
+})
+
+// console.log(despesasArray.despesas.despesa.length)
 
 // despesasArray.despesas.despesa.forEach(item => {
 //     let values = []

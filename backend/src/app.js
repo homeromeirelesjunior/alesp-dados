@@ -33,7 +33,7 @@ app.get('/deputados/:id', (req, res) => {
     let id = req.params.id
 
     try {
-        db.all(`SELECT * FROM deputados WHERE Id =  ?`, [id], (err, rows) => {
+        db.get(`SELECT * FROM deputados WHERE Id =  ?`, [id], (err, rows) => {
            if (err) {
                console.log(err)
            }
@@ -45,21 +45,41 @@ app.get('/deputados/:id', (req, res) => {
     }    
 })
 
+// app.get('/busca', (req, res) => {
+//     res.setHeader('Content-Type', 'application/json')
+//     let deputado = req.query.deputado
+
+//     // console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%'`)
+
+//     try {
+//         db.all(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%'`, [], (err, rows) => {
+//             if (err) {
+//                 console.log(err)
+//             }
+
+//             res.end(JSON.stringify(rows))
+//         })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
+
 app.get('/busca', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     let deputado = req.query.deputado
+    let ano = req.query.ano
 
-    console.log(deputado)
+    // console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%'`)
+
+    console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`)
 
     try {
-        db.get(`SELECT * FROM deputados WHERE Deputado LIKE '%?%'`, [deputado], (err, rows) => {
+        db.all(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`, [], (err, rows) => {
             if (err) {
                 console.log(err)
             }
 
-            res.send(deputado)
             res.end(JSON.stringify(rows))
-
         })
     } catch (error) {
         console.log(error)
