@@ -71,15 +71,19 @@ app.get('/busca', (req, res) => {
 
     // console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%'`)
 
-    console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`)
+    // console.log(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`)
 
     try {
-        db.all(`SELECT * FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`, [], (err, rows) => {
+        db.all(`SELECT Deputado, Matricula, Ano, Tipo, Valor FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`, [], (err, rows) => {
             if (err) {
                 console.log(err)
-            }
-
-            res.end(JSON.stringify(rows))
+            } else {
+                if (rows) {
+                    res.end(JSON.stringify(rows))
+                } else {
+                    res.end('Deputado ou Ano inválidos.')
+                }
+            }            
         })
     } catch (error) {
         console.log(error)
