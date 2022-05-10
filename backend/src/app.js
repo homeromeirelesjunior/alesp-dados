@@ -49,9 +49,10 @@ app.get('/busca', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     let deputado = req.query.deputado
     let ano = req.query.ano
+    let mes = req.query.mes
 
     try {
-        db.all(`SELECT Deputado, Matricula, Ano, Tipo, Valor FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano}`, [], (err, rows) => {
+        db.all(`SELECT Id, Deputado, Matricula, Ano, Tipo, Valor FROM deputados WHERE Deputado LIKE '%${deputado}%' AND Ano = ${ano} AND Mes = ${mes}`, [], (err, rows) => {
             if (err) {
                 console.log(err)
             } else {

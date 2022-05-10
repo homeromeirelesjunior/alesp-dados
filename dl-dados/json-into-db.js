@@ -8,24 +8,24 @@ let count = 0
 
 const despesasArray = JSON.parse(despesasJSON)
 
-const createTable = 'CREATE TABLE IF NOT EXISTS "deputados" ("Id"	INTEGER NOT NULL,"Ano"	INTEGER NOT NULL,	"Matricula"	TEXT NOT NULL,"Mes"	TEXT NOT NULL,	"Valor"	REAL NOT NULL,	"CNPJ"	TEXT NOT NULL,	"Deputado"	TEXT NOT NULL,	"Tipo"	TEXT NOT NULL,	"Fornecedor"	TEXT NOT NULL,	PRIMARY KEY("Id" AUTOINCREMENT));'
+const createTable = 'CREATE TABLE IF NOT EXISTS "deputados" ("Id"	INTEGER,"Ano"	INTEGER,	"Matricula"	TEXT,"Mes"	TEXT,	"Valor"	REAL,	"CNPJ"	TEXT,	"Deputado"	TEXT,	"Tipo"	TEXT,	"Fornecedor"	TEXT,	PRIMARY KEY("Id" AUTOINCREMENT));'
 const dropTable = 'DROP TABLE IF EXISTS deputados'
 
-db.run(dropTable, (err) => {
-  if (err) {
-    console.log('Erro, tabela não deletada.')
-  } else {
-    console.log('Tabela deletada.')
-  }
-})
+// db.run(dropTable, (err) => {
+//   if (err) {
+//     console.log('Erro, tabela não deletada.')
+//   } else {
+//     console.log('Tabela deletada.')
+//   }
+// })
 
-db.run(createTable, (err) => {
-  if (err) {
-    console.log('Erro, verificar criação de tabelas.')
-  } else {
-    console.log('Tabela criada.')
-  }
-});
+// db.run(createTable, (err) => {
+//   if (err) {
+//     console.log('Erro, verificar criação de tabelas.')
+//   } else {
+//     console.log('Tabela criada.')
+//   }
+// });
 
 // despesasArray.despesas.despesa.forEach(item => {            
 //   db.run(`INSERT INTO deputados VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)`, 
